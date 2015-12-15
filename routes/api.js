@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.sendStatus().send('This is api test');
-});
+// List of apis entries
+var profile = require('./apis/profile'),
+    skills  = require('./apis/skills');
+
+router.use('/profile',profile);
+router.use('/skills',skills);
 
 module.exports = router;
