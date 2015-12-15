@@ -1,0 +1,22 @@
+{
+  "name": "TimeExchange",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "TimeExchange"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "homepage": "https://timeexchange.github.io/",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
