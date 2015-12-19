@@ -1,0 +1,178 @@
+@import "bootstrap/bootstrap.less";
+@import "TEX-variable.less";
+
+/* ==========================================================================
+   General Items 基本設定
+   ========================================================================== */
+
+html{
+  font-size: 62.5%; // 16px*62.5%=10px
+  @media screen and (min-width: @grid-float-breakpoint){
+    font-size: 100%; // 16px
+  }
+}
+
+body{
+  font-size: @font-size-base; 
+  font-family: @font-family-base;
+  color: @text-color;
+  background: @body-bg;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* ==========================================================================
+   Layout 版面
+   ========================================================================== */
+
+//**** header ****
+
+#header{
+  width: 100%;
+  background: transparent;
+}
+
+//**** wrapper ****
+
+#wrapper{
+  min-height: 100vh; /* occupy 100% view height no matter how much content */
+}
+
+//**** content ****
+
+#content{
+  overflow:auto; 
+  padding-bottom: 50px; /* space for footer height */
+}
+
+//**** main ****
+
+//**** aside ****
+
+//**** footer ****
+
+#footer{
+  clear:both;
+  margin-top: -50px; /* negative value of footer height */
+  min-height: 50px; /* footer height */
+  width: 100%;
+}
+
+/* ==========================================================================
+   Module 模組 （_mod）
+   ========================================================================== */
+
+//**** homepage video ****
+
+.mod_hero-section{
+  position: relative;
+}
+
+.homepage-hero-module {
+    border-right: none;
+    border-left: none;
+    position: relative;
+}
+.no-video .video-container video,
+.touch .video-container video {
+    display: none;
+}
+.no-video .video-container .poster,
+.touch .video-container .poster {
+    display: block !important;
+}
+.video-container {
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+.video-container .poster img {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+.video-container .filter {
+    z-index: 100;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+.video-container video {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+}
+.video-container video.fillWidth {
+    width: 100%;
+}
+
+//**** logo module ****
+
+.mod_logo{
+  height: @navbar-height; /* same as parent's height in order to set the reference for vertical align */
+  margin-right: @margin-base;
+  a{
+    display: inline-block;
+    img{    
+      width: 100px;
+      height: @navbar-height;
+      vertical-align: middle;
+    }
+  }
+}
+
+//**** navbar module ****
+
+.mod_navbar{
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 0px;
+  right: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  ul.navbar-nav{
+  &.navbar-right{
+    >li{
+        >a{
+          color: @white-base;
+
+        }
+      }
+    }
+  }
+}
+
+
+//**** user module ****
+
+.mod_user{
+  &:extend(.navbar-brand);
+  float: none;
+  overflow: hidden;
+  img{
+    background-color: @gray-light;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+  @media screen and (min-width: @grid-float-breakpoint){
+    float: left;
+    padding: 7px; /* (navbar height - img width)/2 */
+    padding-right: 0px;
+  }
+}
+
+
+
+
+
+
+
+
