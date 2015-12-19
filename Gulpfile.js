@@ -1,15 +1,15 @@
 var gulp = require('gulp'),
-  sass = require('gulp-sass'),
+  // sass = require('gulp-sass'),
   autoprefixer = require('gulp-autoprefixer'),
-  jshint = require('gulp-jshint'),
+  // jshint = require('gulp-jshint'),
   uglify = require('gulp-uglify'),
   imagemin = require('gulp-imagemin'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
-  notify = require('gulp-notify'),
+  // notify = require('gulp-notify'),
   cache = require('gulp-cache'),
-  livereload = require('gulp-livereload'),
-  connect = require('gulp-connect'),
+  // livereload = require('gulp-livereload'),
+  // connect = require('gulp-connect'),
   lr = require('tiny-lr'),
   server = lr();
 
@@ -17,6 +17,10 @@ var gulp = require('gulp'),
 gulp.task('webserver', function() {
   connect.server();
 });
+
+gulp.task('migrate', function(){
+  exec("echo 'hello'")
+})
 
 gulp.task('styles', function() {
   return gulp.src('public/sass/styles.scss')
