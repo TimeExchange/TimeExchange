@@ -93,7 +93,7 @@ module.exports = {
         var user = chunck[0],
             info = chunck[1],
             lists = ['id','name','email','accessToken','expires_at','scopes'];
-
+        log.debug(user)
         if (!!user){
           // If user exists
           for (var i = 0; i < lists.length; i++) {
@@ -110,7 +110,9 @@ module.exports = {
           // If not exist - create a new one
           var newUser = new User();
 
-          newUser.email = info.email;
+          // We only check fb.id and email uniqueness; because we don't know what username 3-party want.
+          newUser.username = newUser.generateUsername(); // Temp username later maybe they'll merge account.
+          newUser.email    = info.email;
           for (var i = 0; i < lists.length; i++) {
             var field = lists[i];
             if (info[field] !== undefined) {

@@ -2,6 +2,7 @@
 var mongoose  = require('mongoose');
 var bcrypt    = require('bcrypt-nodejs');
 var Schema    = mongoose.Schema;
+var uuid = require('node-uuid');
 
 var UserSchema = new Schema({
   username  : {type: String, unique: true}, // Used as login account
@@ -65,6 +66,10 @@ UserSchema.methods.login = function(){
   }}, function(err, raw){
     return;
   });
+}
+
+UserSchema.methods.generateUsername = function(){
+  return uuidv1();
 }
 
 UserSchema.methods.generateHash = function(password){

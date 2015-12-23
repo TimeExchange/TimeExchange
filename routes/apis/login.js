@@ -3,6 +3,7 @@
 var express = require('express'),
     router  = express.Router(),
     mongoose = require('mongoose'),
+    fs  = require('fs'),
     log = require('../../service/LogService'),
     ThirdPartyAuth = require('../../service/ThirdPartyAuth'),
     TokenService = require('../../service/TokenService'),
@@ -12,22 +13,6 @@ var express = require('express'),
     User = mongoose.model("User");
 
 FB.setAccessToken(config.facebook.clientID + '|' + config.facebook.clientSecret);
-
-router.post('/post',function(req,res) {
-  var body = 'My first post using facebook-node-sdk';
-  var token = (req.body)? req.body.token : '';
-  FB.setAccessToken(token);
-  FB.api('me/feed', 'post', { message: body}, function (result) {
-    if(!result || result.error) {
-      console.log(!result ? 'error occurred' : result.error);
-      return;
-    }
-    console.log('Post Id: ' + result.id);
-    res.send(result)
-  });
-  FB.setAccessToken(config.facebook.clientID + '|' + config.facebook.clientSecret);
-
-});
 
 router.get('/',function(req,res) {
   res.send('This is login page, please POST /api/login with username and password.');
