@@ -1,11 +1,18 @@
-var express = require('express');
-var router = express.Router();
+// api.js - api routes center
+'use strict';
+var express = require('express'),
+    router  = express.Router(),
+    path    = require('path'),
+    Step    = require('step'),
+    log     = require('../service/LogService'),
+    fs      = require('fs'),
+    apiPath = path.join(__dirname, "apis");
 
-// List of apis entries
-var profile = require('./apis/profile'),
-    skills  = require('./apis/skills');
-
-router.use('/profile',profile);
-router.use('/skills',skills);
+fs.readdirSync(apiPath)
+.forEach(function(file){
+  var fileName = file.replace('.js','');
+  router.use('/'+fileName, require(path.join(apiPath, fileName)) );
+  log.debug('[API Router] ' + fileName + ' is included.');
+});
 
 module.exports = router;

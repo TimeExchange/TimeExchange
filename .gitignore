@@ -30,3 +30,7 @@ node_modules
 # Database Configuration
 database.json
 .env
+config.js
+
+
+uploads/*

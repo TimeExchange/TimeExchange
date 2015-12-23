@@ -1,6 +1,6 @@
 var express = require('express'),
     router  = express.Router(),
-    pg = require('pg');
+    mongoose = require('mongoose');
 
 router.get('/',function(req,res) {
   res.send('skills test')
