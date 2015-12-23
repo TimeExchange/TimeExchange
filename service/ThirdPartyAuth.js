@@ -16,6 +16,7 @@ module.exports = {
     facebook : function(token, callback){
       function checkInputToken(){
         var deferred = Q.defer();
+
         FB.api('/debug_token', { input_token : token }, function (result){
           if (result.error || (result.data && result.data.error)){
             var msg = result.data?  result.data.error.message : result.error.message;
@@ -26,14 +27,34 @@ module.exports = {
         return deferred.promise;
       };
 
+      function extendAccessToken(info){
+        var deferred = Q.defer();
+
+        FB.api('oauth/access_token', {
+          client_id: config.facebook.clientID,
+          client_secret: config.facebook.clientSecret,
+          grant_type: 'fb_exchange_token',
+          fb_exchange_token: token
+        }, function (result) {
+          if(!result || result.error)
+            deferred.reject(!result ? 'Error occurred when extending access token.' : result.error);
+
+          info.token     = result.access_token;
+          info.expires_at = result.expires;
+
+          deferred.resolve(info);
+        });
+        return deferred.promise;
+      };
+
       function getUserProfile(result){
         var deferred = Q.defer();
-        var date = new Date(result.expires_at*1000);
+        var date = new Date(result.expires_at*1000 + Date.now());
         var info = {
           id          : result.user_id,
           name        : '',
           email       : '',
-          accessToken : token,
+          accessToken : result.token,
           expires_at  : date.toString(),
           scopes      : result.scopes
         }
@@ -41,7 +62,7 @@ module.exports = {
         var fields = ['id','name','email'];
 
         FB.api(info.id, {fields}, function(data){
-          log.debug('FB api : ' + JSON.stringify(data) );
+          // log.debug('FB api : ' + JSON.stringify(data) );
           info.name  = data.name;
           info.email = data.email;
           deferred.resolve(info);
@@ -106,6 +127,7 @@ module.exports = {
       }
 
       Q.fcall(checkInputToken)
+      .then(extendAccessToken)
       .then(getUserProfile)
       .then(checkExistence)
       .then(updateOrCreate)

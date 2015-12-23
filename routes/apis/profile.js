@@ -51,7 +51,7 @@ router.post('/', isAuth, upload.array('photo',1), function(req,res) {
         currentUser.save(function(err, user){
           if (err)
             return res.status(500).send({msg : err.errmsg});
-          log.info('User ' + req.user._id + ' update profile');
+          log.info('User ' + req.user._id + ' - update profile');
           res.status(200).send({msg : 'Update successfully.', user : currentUser});
         });
       }

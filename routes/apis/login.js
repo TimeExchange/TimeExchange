@@ -13,6 +13,22 @@ var express = require('express'),
 
 FB.setAccessToken(config.facebook.clientID + '|' + config.facebook.clientSecret);
 
+router.post('/post',function(req,res) {
+  var body = 'My first post using facebook-node-sdk';
+  var token = (req.body)? req.body.token : '';
+  FB.setAccessToken(token);
+  FB.api('me/feed', 'post', { message: body}, function (result) {
+    if(!result || result.error) {
+      console.log(!result ? 'error occurred' : result.error);
+      return;
+    }
+    console.log('Post Id: ' + result.id);
+    res.send(result)
+  });
+  FB.setAccessToken(config.facebook.clientID + '|' + config.facebook.clientSecret);
+
+});
+
 router.get('/',function(req,res) {
   res.send('This is login page, please POST /api/login with username and password.');
 });
@@ -57,6 +73,7 @@ router.post('/',function(req,res) {
         return res.status(401).send({msg :'Wrong password.'});
       else {
         user.login(); // Record login timestamps
+        log.info('User ' + user._id + ' - local login.')
         return res.status(200).send({
           msg :'Success',
           token: TokenService.issueToken({id : user._id})
@@ -83,6 +100,7 @@ router.post('/thirdParty',function(req,res) {
       return res.status(401).send({msg : err});
     }
     user.login(); // Record login timestamps
+    log.info('User ' + user._id + ' - thirdParty login.')
     res.status(200).send({
       user : user,
       token : TokenService.issueToken({id : user._id})
