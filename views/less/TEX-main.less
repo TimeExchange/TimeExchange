@@ -82,33 +82,36 @@ body{
     display: block !important;
 }
 .video-container {
-    position: relative;
-    bottom: 0%;
-    left: 0%;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background: #000;
-}
-.video-container .poster img {
-    width: 100%;
-    bottom: 0;
-    position: absolute;
-}
-.video-container .filter {
+  position: relative;
+  bottom: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  .poster{
+    img {
+      width: 100%;
+      bottom: 0;
+      position: absolute;
+    }
+  }
+  .filter {
     z-index: 100;
     position: absolute;
     background: rgba(0, 0, 0, 0.4);
     width: 100%;
-}
-.video-container video {
+  }
+  video {
     position: absolute;
     z-index: 0;
     bottom: 0;
+    &.fillWidth{
+      width: 100%;
+    }
+  }
 }
-.video-container video.fillWidth {
-    width: 100%;
-}
+
 
 //**** logo module ****
 
@@ -142,7 +145,10 @@ body{
     >li{
         >a{
           color: @white-base;
-
+          &:hover,
+          &:focus{
+            color: @accent-1;
+          }
         }
       }
     }
@@ -170,6 +176,16 @@ body{
 }
 
 
+//**** intro module ****
+
+.mod_intro{
+  .content-wrapper{
+    padding: 2rem;
+    @media screen and (min-width: @grid-float-breakpoint){
+      padding: 3rem;
+    }
+  }
+}
 
 
 

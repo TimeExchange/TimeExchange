@@ -12,10 +12,12 @@ var logger            = require("./service/LogService");
 
 var app = express();
 
+
 var dot    = require('dotenv').load();
 var db     = require('./db/connection');
 var api    = require('./routes/api');
 var routes = require('./routes/routes');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views/jade'));

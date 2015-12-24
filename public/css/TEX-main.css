@@ -6897,6 +6897,10 @@ body {
 .mod_navbar ul.navbar-nav.navbar-right > li > a {
   color: #fff;
 }
+.mod_navbar ul.navbar-nav.navbar-right > li > a:hover,
+.mod_navbar ul.navbar-nav.navbar-right > li > a:focus {
+  color: #2196F3;
+}
 .mod_user {
   float: none;
   overflow: hidden;
@@ -6913,5 +6917,13 @@ body {
     padding: 7px;
     /* (navbar height - img width)/2 */
     padding-right: 0px;
+  }
+}
+.mod_intro .content-wrapper {
+  padding: 2rem;
+}
+@media screen and (min-width: 768px) {
+  .mod_intro .content-wrapper {
+    padding: 3rem;
   }
 }

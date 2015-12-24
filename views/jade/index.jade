@@ -7,11 +7,12 @@ block content
           .filter
           video.fillWidth(autoplay='', loop='')
             source(src='/videos/MP4/homepage-hero-video.mp4', type='video/mp4')
-            | Your browser does not support the video tag. I suggest you upgrade your browser.
+            | Your browser does not support the video tag. I suggest you upgrade your 
             source(src='/videos/MP4/homepage-hero-video.webm', type='video/webm')
             | Your browser does not support the video tag. I suggest you upgrade your browser.
           .poster.hidden
             img(src='/img/homepage-hero-image.jpg', alt='')
+    //end homepage-hero-module
     nav.mod_navbar.navbar.navbar-default
       .container
         .mod_logo.pull-left
@@ -33,6 +34,15 @@ block content
               a(href="#")
                 img.img-responsive(src="https://s3.amazonaws.com/profile_photos/30390457330315.cLSEphxDroi4IfvNqPDU_60x60.png")
     //end mod_navbar
+  //end mod_hero-section
+  section.mod_intro
+    .container
+      .content-wrapper.text-center
+        header.page-header
+          h3 What are SkillExchange and TimeBanking?
+        h4 Some large introductory text that can provide an overview of what this page is about. This can be useful for readers that are skimming (everyone).
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tristique quam in purus eleifend maximus. Nullam sed magna eget leo consequat faucibus in vitae magna. Quisque ultricies, enim at tempor ornare, lorem orci congue lectus, ut viverra ante lectus a quam. Pellentesque elementum luctus risus, vel pulvinar magna facilisis at. Vivamus sit amet pretium diam. Suspendisse in neque ac orci auctor rutrum.
+
 
 
 block javascript
@@ -42,13 +52,11 @@ block javascript
         scaleVideoContainer();
 
         initBannerVideoSize('.video-container .poster img');
-        initBannerVideoSize('.video-container .filter');
         initBannerVideoSize('.video-container video');
 
         $(window).on('resize', function() {
             scaleVideoContainer();
             scaleBannerVideoSize('.video-container .poster img');
-            scaleBannerVideoSize('.video-container .filter');
             scaleBannerVideoSize('.video-container video');
         });
     });
@@ -84,7 +92,7 @@ block javascript
 
             $(this).width(windowWidth);
 
-            if(windowWidth < 1000){
+            if(windowWidth < 2000){
                 videoHeight = windowHeight;
                 videoWidth = videoHeight / videoAspectRatio;
                 $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
