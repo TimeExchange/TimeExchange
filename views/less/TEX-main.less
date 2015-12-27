@@ -90,17 +90,22 @@ body{
   overflow: hidden;
   background: #000;
   .poster{
+    min-height: 540px;
     img {
       width: 100%;
       bottom: 0;
       position: absolute;
+      -webkit-filter: brightness(70%);
+      -moz-filter: brightness(70%);
+      filter: brightness(70%);
     }
   }
   .filter {
-    z-index: 100;
+    z-index: 5;
     position: absolute;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
     width: 100%;
+    height: 100%;
   }
   video {
     position: absolute;
@@ -116,10 +121,14 @@ body{
 //**** logo module ****
 
 .mod_logo{
+  position: relative;
   height: @navbar-height; /* same as parent's height in order to set the reference for vertical align */
   margin-right: @margin-base;
   a{
-    display: inline-block;
+    display: block;
+    font-size: 16px;
+    color: @gray-light;
+    margin: round((@navbar-height - 20) / 2);
     img{    
       width: 100px;
       height: @navbar-height;
@@ -128,28 +137,89 @@ body{
   }
 }
 
-//**** navbar module ****
+//**** header-nav module ****
 
-.mod_navbar{
-  position: absolute;
+.mod_header-nav{
   z-index: 10;
-  top: 10px;
-  left: 0px;
-  right: 0px;
-  margin-right: auto;
-  margin-left: auto;
-  background: transparent;
+  background: @white-base;
   border: none;
+  .border-radius(0px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+  margin-bottom: 0px;
   ul.navbar-nav{
   &.navbar-right{
     >li{
         >a{
-          color: @white-base;
+          height: @navbar-height;
+          padding-left: round((@navbar-height - 20) / 2);
+          padding-right: round((@navbar-height - 20) / 2);
+          text-transform: uppercase;
+          color: @gray-light;
+          transition: all .2s 0s ease-in-out;
           &:hover,
           &:focus{
-            color: @accent-1;
+            border-bottom: 3px solid @accent-1;
           }
         }
+      }
+    }
+  }
+}
+
+//**** navbar module ****
+
+.mod_navbar{
+  position: absolute;
+  z-index: 8;
+  top: 0px;
+  width: 100%;
+  border: none;
+  .border-radius(0px);
+  background: transparent;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+  ul.navbar-nav{
+    >li{
+      >a{
+        height: @navbar-height;
+        padding-left: round((@navbar-height - 20) / 2);
+        padding-right: round((@navbar-height - 20) / 2);
+        text-transform: uppercase;
+        color: @white-base;
+        transition: all .2s 0s ease-in-out;
+        &:hover,
+        &:focus{
+          color: @white-base;
+          border-bottom: 3px solid @accent-1;
+        }
+      }
+    }
+  }
+}
+
+//**** search-box module ****
+
+.mod_search-box{
+  margin-top: 7px;
+  margin-left: @margin-base/2;
+  .form-group{
+    margin: 0px;
+    .form-control{
+      .appearance(none);
+      .border-radius(0px);
+      border: none;
+      &#search{
+        float: left;
+        width: 80%;
+        .border-radius(5px 0px 0px 5px);
+        .box-shadow(none);
+        border: 1px solid #ddd;
+      }
+      &#search-btn{
+        float: right;
+        width: 20%;
+        .border-radius(0px 5px 5px 0px);
+        color: @white-base;
+        background-color: @accent-1;
       }
     }
   }
@@ -180,15 +250,54 @@ body{
 
 .mod_intro{
   .content-wrapper{
+    margin: 0 auto;
     padding: 2rem;
     @media screen and (min-width: @grid-float-breakpoint){
-      padding: 3rem;
+      max-width: 780px;
     }
   }
 }
 
+//**** entries module ****
 
+.mod_entries{
+  position: relative;
+  margin-bottom: @margin-base/2;
+  .entry-image{
+    width: 100%;
+    height: 160px;
+    /* Define image hover effect */
+    &:hover{
+      .de_veil{
+        opacity: 0.5;
+      }
+    } 
+  }
+  .entry-title{
+    margin-top: 20px;
+  }
+}
 
+.card-grid{
+  padding: 10px;
+  background-color: #f7f7f9;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24);
+}
+
+//**** buttons ****
+
+.btn-more{
+  background: @accent-1;
+  color: @white-base;
+  font-size: @font-size-small;
+  .border-radius(2px);
+  transition: box-shadow .28s cubic-bezier(.4,0,.2,1);
+  &:hover,
+  &:focus{
+    color: @white-base;
+    box-shadow: 0 4px 21px 0 rgba(0,0,0,.2),0 5px 20px 0 rgba(0,0,0,.2);
+  }
+}
 
 
 

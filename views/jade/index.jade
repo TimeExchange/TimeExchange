@@ -2,6 +2,27 @@ extends ./scaffold/scaffold.jade
 
 block content
   section.mod_hero-section
+    nav.mod_navbar.navbar.navbar-default(data-0="position:absolute; background-color:rgba(59,176,188,0);" data-50="position:fixed; background-color:rgba(59,176,188,1);")
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #navbar-collapse.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href="#") services
+            li
+              a(href="#") work
+            li
+              a(href="#") about
+            li
+              a(href="#") fb group
+            li
+              a(href="#") contact
+    //end mod_navbar
     .homepage-hero-module
       .video-container
           .filter
@@ -13,27 +34,6 @@ block content
           .poster.hidden
             img(src='/img/homepage-hero-image.jpg', alt='')
     //end homepage-hero-module
-    nav.mod_navbar.navbar.navbar-default
-      .container
-        .mod_logo.pull-left
-          a(href="/")
-            img(src='').img-responsive
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false', aria-controls='navbar')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-        #navbar-collapse.collapse.navbar-collapse
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href="#") 註冊
-            li
-              a(href="/auth/facebook") 登入
-            .mod_user
-              a(href="#")
-                img.img-responsive(src="https://s3.amazonaws.com/profile_photos/30390457330315.cLSEphxDroi4IfvNqPDU_60x60.png")
-    //end mod_navbar
   //end mod_hero-section
   section.mod_intro
     .container
@@ -42,10 +42,46 @@ block content
           h3 What are SkillExchange and TimeBanking?
         h4 Some large introductory text that can provide an overview of what this page is about. This can be useful for readers that are skimming (everyone).
         p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tristique quam in purus eleifend maximus. Nullam sed magna eget leo consequat faucibus in vitae magna. Quisque ultricies, enim at tempor ornare, lorem orci congue lectus, ut viverra ante lectus a quam. Pellentesque elementum luctus risus, vel pulvinar magna facilisis at. Vivamus sit amet pretium diam. Suspendisse in neque ac orci auctor rutrum.
+  section.mod_cases
+    .container
+      .content-wrapper.text-center
+        header.page-header
+          h3 What People Say?
+        .mod_entries.col-xs-12.col-md-4
+          .card-grid
+            a(href="#")
+              .entry-image(style="background-image:url('https://unsplash.it/400/400?image=838');background-size:cover;background-position:50%;background-repeat:no-repeat;")
+            .common_description.text-center
+               header.entry-title
+                 h4 Nicole Martin
+               p Quisque viverra metus non dui egestas, ac dignissim risus.
+               a(href="#").btn.btn-more Read Story
+        .mod_entries.col-xs-12.col-md-4
+          .card-grid
+            a(href="#")
+              .entry-image(style="background-image:url('https://unsplash.it/400/400?image=602');background-size:cover;background-position:50%;background-repeat:no-repeat;")
+            .common_description.text-center
+               header.entry-title
+                 h4 Randy Allen
+               p Quisque viverra metus non dui egestas, ac dignissim risus.
+               a(href="#").btn.btn-more Read Story
+        .mod_entries.col-xs-12.col-md-4
+          .card-grid
+            a(href="#")
+              .entry-image(style="background-image:url('https://unsplash.it/400/300?image=823');background-size:cover;background-position:50%;background-repeat:no-repeat;")
+            .common_description.text-center
+               header.entry-title
+                 h4 Sara Kelly
+               p Quisque viverra metus non dui egestas, ac dignissim risus.
+               a(href="#").btn.btn-more Read Story
+
+
 
 
 
 block javascript
+  script.
+    var s = skrollr.init();
   script.
     //jQuery is required to run this code
     $( document ).ready(function() {
