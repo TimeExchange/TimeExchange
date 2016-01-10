@@ -1,24 +1,17 @@
 header#header
-  nav.mod_header-nav.navbar.navbar-default
+  nav.mod_header-nav.navbar.navbar-default(data-28="position:absolute;top:50px;background-color:rgba(59,176,188,0);box-shadow: 0px 0px 0px rgba(0,0,0,0);" data-30="position:fixed;top:0px;background-color:rgba(59,176,188,1);box-shadow: 0px 3px 20px rgba(0,0,0,0.5);")
     .container
       .mod_logo.pull-left
         a(href="/") TimeExchange
-          //img(src='').img-responsive
       ul.nav.navbar-nav.navbar-right
         li
           a(href="#") register
         li
-          a(href="/auth/facebook") login
+          a.btn.btn-socialmedia-login.facebook(href="/auth/facebook") login
         .mod_user
           a(href="#")
             img.img-responsive(src="https://s3.amazonaws.com/profile_photos/30390457330315.cLSEphxDroi4IfvNqPDU_60x60.png")
-        section.mod_search-box.pull-right
-          form.form-inline(role="search")
-            .form-group
-              input.form-control(type="search" id="search", placeholder="search...")
-              button.form-control(type="submit" id="search-btn")
-                span.glyphicon.glyphicon-search
-        //end mod_search-box
+
 
           
   

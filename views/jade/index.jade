@@ -2,38 +2,31 @@ extends ./scaffold/scaffold.jade
 
 block content
   section.mod_hero-section
-    nav.mod_navbar.navbar.navbar-default(data-0="position:absolute; background-color:rgba(59,176,188,0);" data-50="position:fixed; background-color:rgba(59,176,188,1);")
+    .stars
+    .twinkling
+    section.hero-content-wrapper(data-0="position:absolute;bottom:20%;" data-500="position:absolute;bottom:35%;")
       .container
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false', aria-controls='navbar')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-        #navbar-collapse.collapse.navbar-collapse
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href="#") services
-            li
-              a(href="#") work
-            li
-              a(href="#") about
-            li
-              a(href="#") fb group
-            li
-              a(href="#") contact
-    //end mod_navbar
-    .homepage-hero-module
-      .video-container
-          .filter
-          video.fillWidth(autoplay='', loop='')
-            source(src='/videos/MP4/homepage-hero-video.mp4', type='video/mp4')
-            | Your browser does not support the video tag. I suggest you upgrade your 
-            source(src='/videos/MP4/homepage-hero-video.webm', type='video/webm')
-            | Your browser does not support the video tag. I suggest you upgrade your browser.
-          .poster.hidden
-            img(src='/img/homepage-hero-image.jpg', alt='')
-    //end homepage-hero-module
+        .hero-text.text-center
+          h1 Hello World
+          h2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tristique quam in purus eleifend maximus. Nullam sed magna eget leo consequat faucibus in vitae magna. Quisque ultricies, enim at tempor ornare, lorem orci congue lectus, ut viverra ante lectus a quam.
+        .common_thirty
+        .index-search
+          form.form-horizontal
+            .form-group
+              input.form-control(type="search" id="search", name='query' placeholder="search...")
+              input.form-control(type="hidden" id="category", name='category', value="course")
+              .dropdown-select
+                button#searchDropdown.btn.btn-default.dropdown-toggle.form-control(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
+                    | 種類
+                  ul.dropdown-menu(aria-labelledby='searchDropdown')
+                    li
+                      a(onclick="changeSearchCategory(this)", data-value="course") 種類
+                    li
+                      a(onclick="changeSearchCategory(this)", data-value="meetup") 技能
+                    li
+                      a(onclick="changeSearchCategory(this)", data-value="space") 地點
+              button.form-control(type="submit" id="search-btn")
+                span.glyphicon.glyphicon-search
   //end mod_hero-section
   section.mod_intro
     .container
