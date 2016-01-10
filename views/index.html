@@ -9,9 +9,9 @@
     <link rel="icon" href="">
     <title>TimeExchange</title>
     <!-- Custom styles for this template-->
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/TEX-main.css" rel="stylesheet">
-    <script src="/js/skrollr.min.js"></script>
+    <link href="../public/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../public/css/TEX-main.css" rel="stylesheet">
+    <script src="../public/js/skrollr.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -19,58 +19,48 @@
   <body>
     <div id="wrapper">
       <header id="header">
-        <nav class="mod_header-nav navbar navbar-default">
+        <nav data-28="position:absolute;top:50px;background-color:rgba(59,176,188,0);box-shadow: 0px 0px 0px rgba(0,0,0,0);" data-30="position:fixed;top:0px;background-color:rgba(59,176,188,1);box-shadow: 0px 3px 20px rgba(0,0,0,0.5);" class="mod_header-nav navbar navbar-default">
           <div class="container">
             <div class="mod_logo pull-left"><a href="/">TimeExchange
                 <!--img(src='').img-responsive--></a></div>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#">register</a></li>
-              <li><a href="/auth/facebook">login</a></li>
+              <li><a href="/auth/facebook" class="btn btn-socialmedia-login facebook">login</a></li>
               <div class="mod_user"><a href="#"><img src="https://s3.amazonaws.com/profile_photos/30390457330315.cLSEphxDroi4IfvNqPDU_60x60.png" class="img-responsive"></a></div>
-              <section class="mod_search-box pull-right">
-                <form role="search" class="form-inline">
-                  <div class="form-group">
-                    <input type="search" id="search" placeholder="search..." class="form-control">
-                    <button type="submit" id="search-btn" class="form-control"><span class="glyphicon glyphicon-search"></span></button>
-                  </div>
-                </form>
-              </section>
-              <!--end mod_search-box-->
-              
             </ul>
           </div>
         </nav>
       </header>
       <div id="content">
         <section class="mod_hero-section">
-          <nav data-0="position:absolute; background-color:rgba(59,176,188,0);" data-50="position:fixed; background-color:rgba(59,176,188,1);" class="mod_navbar navbar navbar-default">
+          <div class="stars"></div>
+          <div class="twinkling"></div>
+          <section data-0="position:absolute;bottom:20%;" data-500="position:absolute;bottom:35%;" class="hero-content-wrapper">
             <div class="container">
-              <div class="navbar-header">
-                <button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+              <div class="hero-text text-center">
+                <h1>Hello World</h1>
+                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tristique quam in purus eleifend maximus. Nullam sed magna eget leo consequat faucibus in vitae magna. Quisque ultricies, enim at tempor ornare, lorem orci congue lectus, ut viverra ante lectus a quam.</h2>
               </div>
-              <div id="navbar-collapse" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#">services</a></li>
-                  <li><a href="#">work</a></li>
-                  <li><a href="#">about</a></li>
-                  <li><a href="#">fb group</a></li>
-                  <li><a href="#">contact</a></li>
-                </ul>
+              <div class="common_thirty"></div>
+              <div class="index-search">
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <input type="search" id="search" name="query" placeholder="search..." class="form-control">
+                    <input type="hidden" id="category" name="category" value="course" class="form-control">
+                    <div class="dropdown-select">
+                      <button id="searchDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-default dropdown-toggle form-control">種類</button>
+                      <ul aria-labelledby="searchDropdown" class="dropdown-menu">
+                        <li><a onclick="changeSearchCategory(this)" data-value="course">種類</a></li>
+                        <li><a onclick="changeSearchCategory(this)" data-value="meetup">技能</a></li>
+                        <li><a onclick="changeSearchCategory(this)" data-value="space">地點</a></li>
+                      </ul>
+                    </div>
+                    <button type="submit" id="search-btn" class="form-control"><span class="glyphicon glyphicon-search"></span></button>
+                  </div>
+                </form>
               </div>
             </div>
-          </nav>
-          <!--end mod_navbar-->
-          <div class="homepage-hero-module">
-            <div class="video-container">
-              <div class="filter"></div>
-              <video autoplay="" loop="" class="fillWidth">
-                <source src="/videos/MP4/homepage-hero-video.mp4" type="video/mp4">Your browser does not support the video tag. I suggest you upgrade your 
-                <source src="/videos/MP4/homepage-hero-video.webm" type="video/webm">Your browser does not support the video tag. I suggest you upgrade your browser.
-              </video>
-              <div class="poster hidden"><img src="/img/homepage-hero-image.jpg" alt=""></div>
-            </div>
-          </div>
-          <!--end homepage-hero-module-->
+          </section>
         </section>
         <!--end mod_hero-section-->
         <section class="mod_intro">
@@ -135,7 +125,7 @@
     -->
     <!-- Placed at the end of the document so the pages load faster-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../public/js/bootstrap.min.js" type="text/javascript"></script>
     <script>var s = skrollr.init();</script>
     <script>
       //jQuery is required to run this code

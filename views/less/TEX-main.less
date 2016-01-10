@@ -62,10 +62,87 @@ body{
    Module 模組 （_mod）
    ========================================================================== */
 
+//**** starry night ****
+
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-webkit-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+
+.stars, .twinkling{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.stars {
+  background: #192D3C url('../img/stars.png') repeat top center;
+  z-index:0;
+}
+
+.twinkling{
+  background:transparent url('../img/twinkling.png') repeat top center;
+  z-index:1;
+  -moz-animation:move-twink-back 300s linear infinite;
+  -ms-animation:move-twink-back 300s linear infinite;
+  -o-animation:move-twink-back 300s linear infinite;
+  -webkit-animation:move-twink-back 300s linear infinite;
+  animation:move-twink-back 300s linear infinite;
+}
+
+
+
 //**** homepage video ****
 
 .mod_hero-section{
   position: relative;
+  min-height: 100vh;
+  background: -webkit-linear-gradient(#192D3C, #3B5466); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#192D3C, #3B5466); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#192D3C, #3B5466); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#192D3C, #3B5466); /* Standard syntax */
+}
+
+.starrynight{
+  min-height:100vh;
+  background:url('https://www.script-tutorials.com/demos/360/images/stars.png');
+  background-size:cover;
+  background-position:50%;
+  background-repeat:no-repeat;
+}
+
+.hero-content-wrapper{
+  position: absolute;
+  bottom: 20%;
+  z-index: 10;
+  width: 100%;
+}
+
+.hero-text{
+  max-width: 800px;
+  margin: 0 auto;
+  color: @white-base;
+  h1{
+    font-size: 80px;
+  }
 }
 
 .homepage-hero-module {
@@ -127,7 +204,7 @@ body{
   a{
     display: block;
     font-size: 16px;
-    color: @gray-light;
+    color: @white-base;
     margin: round((@navbar-height - 20) / 2);
     img{    
       width: 100px;
@@ -140,11 +217,14 @@ body{
 //**** header-nav module ****
 
 .mod_header-nav{
-  z-index: 10;
-  background: @white-base;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  top: 50px;
+  background: transparent;
   border: none;
   .border-radius(0px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+  //box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
   margin-bottom: 0px;
   ul.navbar-nav{
   &.navbar-right{
@@ -154,7 +234,7 @@ body{
           padding-left: round((@navbar-height - 20) / 2);
           padding-right: round((@navbar-height - 20) / 2);
           text-transform: uppercase;
-          color: @gray-light;
+          color: @white-base;
           transition: all .2s 0s ease-in-out;
           &:hover,
           &:focus{
@@ -224,6 +304,97 @@ body{
     }
   }
 }
+
+//**** index-search module ****
+
+.index-search{
+  height: 100px;
+  padding: 20px 0px;
+  .form-horizontal{
+    width: 70%;
+    margin: 0 auto;
+    .form-group{
+      margin-bottom: 0px;
+      .form-control{
+        display: inline-block;
+        float: left;
+        height: 60px;
+        font-size: 16px;
+        color: @gray-base;
+        .border-radius(0px);
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        &#search{
+          width: 70%;
+          border-radius: 10px 0px 0px 10px;
+          @media(max-width:420px){width: 55%;}
+        }
+        &#search-btn{
+          width: 15%;
+          float: right;
+          background-color: @accent-1;
+          color: @white-base;
+          border-color: transparent;
+          border-radius: 0px 10px 10px 0px;
+          &:hover{
+            background-color: #83bb48;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dropdown-select{
+  display:inline-block;
+  vertical-align:middle;
+  position:relative;
+  width:15%;
+  @media(max-width:420px){width: 30%; float: left;}
+  #searchDropdown.btn-default{
+    text-align: left;
+    color: @gray-base;
+    border: none;
+    &:hover,
+    &:focus{
+      background: @white-base;
+      color: @gray-base;
+    }
+    &:after{
+      content:"";
+      position:absolute;
+      z-index:2;
+      right:10px;
+      top:50%;
+      margin-top:-3px;
+      height:0;
+      width:0;
+      border-top:6px solid @gray-base;
+      border-left:6px solid transparent;
+      border-right:6px solid transparent;
+      pointer-events:none;
+    }
+  }
+  .dropdown-menu{
+    left: -92px;
+    min-width: 236px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    .border-radius(2px);
+    font-size: 16px;
+    >li{
+      >a{
+        color: #666;
+        &:hover,
+        &:focus{
+          color: @white-base;
+          background-color: @accent-1;
+        }
+      }
+    }
+  }
+}
+
 
 
 //**** user module ****
@@ -299,5 +470,18 @@ body{
   }
 }
 
+.common_twenty{
+  width: 100%;
+  background: none;
+  height: 20px;
+  clear: both;
+}
+
+.common_thirty{
+  width: 100%;
+  background: none;
+  height: 30px;
+  clear: both;
+}
 
 
