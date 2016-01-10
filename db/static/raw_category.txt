@@ -1,0 +1,32 @@
+程式設計類,Programming
+  Python,Python
+  Node.js,Node.js
+  Python,Python
+  C,C
+  C++,C++
+  C#,C#
+  HTML/CSS,HTML/CSS
+  Java,Java
+  PHP,PHP
+  Swift,Swift
+  Ruby on Rail,Ruby on Rail
+=
+語言類,Language
+  中文,Chinese
+    中文寫作,Chinese Writing
+    中文口說,Chinese Oral
+  英文,English
+    英文寫作,English Writing
+    英文口說,English Oral
+  法文,French
+    法文寫作,French Writing
+    法文口說,French Oral
+  德文,German
+    德文寫作,German Writing
+    德文口說,German Oral
+  西班牙文,Spanish
+    西班牙文寫作,Spanish Writing
+    西班牙文口說,Spanish Oral
+  日文,Japanese
+    日文寫作,Japanese Writing
+    日文口說,Japanese Oral

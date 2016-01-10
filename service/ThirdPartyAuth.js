@@ -93,7 +93,9 @@ module.exports = {
         var user = chunck[0],
             info = chunck[1],
             lists = ['id','name','email','accessToken','expires_at','scopes'];
-        log.debug(user)
+
+        log.debug(user);
+
         if (!!user){
           // If user exists
           for (var i = 0; i < lists.length; i++) {
@@ -110,8 +112,7 @@ module.exports = {
           // If not exist - create a new one
           var newUser = new User();
 
-          // We only check fb.id and email uniqueness; because we don't know what username 3-party want.
-          newUser.username = newUser.generateUsername(); // Temp username later maybe they'll merge account.
+          newUser.username = info.name || info.email.split('@')[0];
           newUser.email    = info.email;
           for (var i = 0; i < lists.length; i++) {
             var field = lists[i];
@@ -120,8 +121,7 @@ module.exports = {
             }
           };
           newUser.save(function(err, count){
-            if (err)
-              deferred.reject(err);
+            if (err) deferred.reject(err);
             deferred.resolve(newUser);
           })
         }
@@ -140,4 +140,5 @@ module.exports = {
         return callback(err);
       });
     } // End facebook auth
+
 }

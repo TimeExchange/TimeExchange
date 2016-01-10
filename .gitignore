@@ -34,3 +34,4 @@ config.js
 
 
 uploads/*
+stats/*

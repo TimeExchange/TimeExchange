@@ -7,8 +7,8 @@ var ReviewSchema = new Schema({
     stars  : {type: Number, required: true, default: 0},
     title  : {type: String, required: false},
     content  : {type: String, required: false},
-    from  : {type:Number, ref: 'User'},
-    to    : {type:Number, ref: 'User'},
+    from  : {type:Schema.Types.ObjectId, ref: 'User'},
+    to    : {type:Schema.Types.ObjectId, ref: 'User'},
     markByStaff  : {type: Boolean, required: true, default: false},
     timestamps : {
       createAt  : {type: Date, default: Date.now},

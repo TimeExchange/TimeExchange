@@ -11,7 +11,6 @@ var express       = require('express'),
 
 router.put('/link', isAuth, function(req,res) {
   if (!req.body) return res.status(400).send({msg : 'Missing request body.'});
-
 });
 
 router.put('/unlink', isAuth, function(req,res) {

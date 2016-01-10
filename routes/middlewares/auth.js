@@ -19,14 +19,6 @@ module.exports = function(req, res, next){
     delete req.headers.authorization;
   }
 
-  //   // Query // - Not In Production, Work ONLY In Development
-  // if (!token) {
-  //   token = !!req.query && !!req.query.token
-  //     ? req.query.token
-  //     : null;
-  //   delete req.query.token;
-  // }
-
   if(!!token){
     // If token exist //
     TokenService

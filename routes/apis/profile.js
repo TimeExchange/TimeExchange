@@ -14,7 +14,7 @@ router.get('/', isAuth, function(req,res) {
   log.info('User ' + req.user._id + ' check profile');
   req.user.login(); // Record login timestamps
   res.status(200).send({
-    user  : req.user,
+    user  : req.user.profile,
     msg   : 'Successfully login.'
   });
 });
@@ -52,11 +52,10 @@ router.post('/', isAuth, upload.array('photo',1), function(req,res) {
           if (err)
             return res.status(500).send({msg : err.errmsg});
           log.info('User ' + req.user._id + ' - update profile');
-          res.status(200).send({msg : 'Update successfully.', user : currentUser});
+          res.status(200).send({msg : 'Update successfully.', user : currentUser.profile});
         });
       }
   );
 });
-
 
 module.exports = router;

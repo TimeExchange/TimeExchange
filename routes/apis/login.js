@@ -18,26 +18,6 @@ router.get('/',function(req,res) {
   res.send('This is login page, please POST /api/login with username and password.');
 });
 
-router.get('/setup',function(req,res) {
-  var newUser = new User();
-
-  newUser.username = 'lulalachen';
-  newUser.email = 'lulalachen@gmail.com';
-  newUser.password = newUser.generateHash('meow');
-  newUser.status = 'applying';
-  log.info(newUser.status)
-  newUser
-  .save(function(err,user){
-    if (err){
-      log.debug(err)
-      return res.status(401).send({
-        msg : err.errmsg
-      })
-    }
-    res.status(200).send({msg : 'Setup successfully.'});
-  })
-});
-
 router.post('/',function(req,res) {
   if (!req.body) return res.status(400).send({msg :'Missing request body.'});
   if (!req.body.username) return res.status(400).send({msg :'Missing username.'});

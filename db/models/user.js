@@ -5,8 +5,8 @@ var Schema    = mongoose.Schema;
 var uuid = require('node-uuid');
 
 var UserSchema = new Schema({
-  username  : {type: String, unique: true}, // Used as login account
-  email     : {type: String, unique: true},
+  username  : {type: String},
+  email     : {type: String, unique: true}, // Used as login account
   password  : {type: String},
   role      : {type: String, required: true, default: 'applicant'}, // applicant, member, admin, banned, .....
   facebook  : {
@@ -25,6 +25,7 @@ var UserSchema = new Schema({
     name          : String,
     photo         : String,
     bios          : String,
+    wishes        : [{type:Schema.Types.ObjectId, ref: 'Wish'}],
     skills        : [{type:Schema.Types.ObjectId, ref: 'Skill'}],
     reviews       : [{type:Schema.Types.ObjectId, ref: 'Review'}],
     endorsement   : [{type:Schema.Types.ObjectId, ref: 'Endorsement'}]
@@ -68,9 +69,10 @@ UserSchema.methods.login = function(){
   });
 }
 
-UserSchema.methods.generateUsername = function(){
-  return uuidv1();
-}
+// UserSchema.methods.generateUsername = function(){
+//   // For third-party login, randomly generate a unique username.
+//   return uuidv1(); // randomly generate username
+// }
 
 UserSchema.methods.generateHash = function(password){
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);

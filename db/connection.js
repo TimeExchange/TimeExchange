@@ -1,6 +1,6 @@
 // connection.js - DB setup
 'use strict';
-var database = process.env.DATABASE_LOCAL || process.env.DATABASE_CLOUD;
+var database = ('local' === 'local') ? process.env.DATABASE_LOCAL : process.env.DATABASE_CLOUD;
 var log      = require('../service/LogService');
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
