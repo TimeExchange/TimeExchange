@@ -1,7 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-
 var scheduleSchema = new Schema({
 
     timestamps : {

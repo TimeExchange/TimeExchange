@@ -15,6 +15,7 @@ var express = require('express'),
 FB.setAccessToken(config.facebook.clientID + '|' + config.facebook.clientSecret);
 
 router.get('/',function(req,res) {
+  console.log('obj');
   res.send('This is login page, please POST /api/login with username and password.');
 });
 

@@ -1,8 +1,10 @@
 doctype html
-html
+html(ng-app="indexApp")
   include ../partial/head.jade
   block head
-  body
+  body(ng-controller="indexCtrl")
+    #modal
+      include ../partial/loginModal
     #wrapper
         include ../partial/header.jade
         #content

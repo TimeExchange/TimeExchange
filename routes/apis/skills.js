@@ -9,6 +9,8 @@ router.get('/',function(req,res) {
 });
 
 router.post('/',isAuth, function(req,res) {
+  var uid = req.user._id;
+
 
 });
 
